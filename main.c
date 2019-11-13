@@ -2,12 +2,11 @@
 #include <string.h>
 #include <ctype.h>
 
-char *modString(char*);
+char *readphrase(char[201]);
 
 int main() {
-	char c;
-	while((c = getchar()) != EOF) {
-		printf("%c", c);
-	}
-	printf("I want to prove theresa wrong");
+	char *hello;
+	char *s = readphrase(hello);
+
+	printf("%s\n",s);
 }
