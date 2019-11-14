@@ -2,11 +2,13 @@
 #include <string.h>
 #include <ctype.h>
 
-char *readphrase(char[201]);
+void readphrase(char[201], int);
 
 int main() {
-	char *hello;
-	char *s = readphrase(hello);
-
-	printf("%s\n",s);
+	char hello[201];
+	int c;
+	while(c = getchar() != EOF) {
+		readphrase(hello, c);
+	}
+	printf("%s\n", hello);
 }

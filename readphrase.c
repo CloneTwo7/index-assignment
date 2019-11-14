@@ -2,25 +2,31 @@
 #include <string.h>
 #include <ctype.h>
 
-char *readphrase(char phrase[201]) {
-    char c;
+void readphrase(char phrase[201], int c) {
     int i = 0;
+    int flag = 0;
 
-    while( (c = getchar()) != (','||'.'||';'||':'||'?'||'!'|| EOF )) {
-        //capitalizes each char
-        c=toupper(c);
+	//stops looping if it hits an ending symbol
+	if( c == (',' || '.' || '?' || '!' || ':' || ';')) {
+	    flag++;
+	}
+	if(flag != 0){
+        	//capitalizes each char
+        	c=toupper(c);
         
-        //sets all blank characters to spaces
-        if(isspace(c)) {
-            c = ' ';
-        }
-        if(c == ('('|| ')' || '\'' || '"'||'-')) {
-            i++;
-        }
-        else {
-            //builds phrase one character at a time
-            phrase[i]=c;
-        }
-    }
-    return(phrase);
+        	//sets all blank characters to spaces
+        	if(isspace(c)) {
+            		c = ' ';
+        	}
+	
+		//skips over the following characters
+        	if(c == ('('|| ')' || '\'' || '"'||'-')) {
+            		i++;
+        	}
+        	else {
+            		//builds phrase one character at a time
+            		phrase[i]=c;
+        	}
+	}
+    phrase[i++] = '\0';
 }
