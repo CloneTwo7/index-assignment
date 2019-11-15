@@ -33,7 +33,7 @@ int main() {
 		readphrase(phrase);
 
 		//block of code to get rid of extra spaces at the beginning of each phrase
-		if(phrase[0] == ' '){
+		while(phrase[0] == ' '){
 			int j = 0;
 			while(j < (strlen(phrase)-1)) {
 				phrase[j] = phrase[j+1];
@@ -42,18 +42,23 @@ int main() {
 			//sets a null terminator for the phrase
 			phrase[j] = '\0';	
 		}
-
+		if(strlen(phrase) >= 199) {
+			phrase[200] = '\0';
+		}
 		//figures out how many phrases total there are
 		int new = repeats(dict, phrase, phrase_counts);
 		num_phrase = num_phrase + new;
 		//if a new phrase is found, it adds it to the dictionary
-		if( new == 1) {
+		if( ( new == 1) && (num_phrase <= 999) ) {
 			strcpy(dict[i],phrase);
 			i++;
 		}
 	}
 	//block of code to print the dictionary
 	printf("---------\n");
+	if(num_phrase >= 999) {
+		num_phrase = 1000;
+	}
 	dictSort(dict, phrase_counts, num_phrase);
 	//calls function to display the sorted dictionary
 	displayDict(dict, num_phrase, phrase_counts);

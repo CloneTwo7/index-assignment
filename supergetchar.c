@@ -8,7 +8,7 @@ int supergetchar() {
 	int c = getchar();
 
 	//if c is an ignorable character, it will repeat until c is not ignorable
-	while( c == ('(' || ')' || '\'' || '\"' || '-'))
+	while( c == '(' || c == ')' || c == '\'' || c == '\"' || c == '-')
 	{
 		c = getchar();
 	}
