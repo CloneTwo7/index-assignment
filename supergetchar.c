@@ -2,7 +2,7 @@
 #include <string.h>
 #include <ctype.h>
 
-char supergetchar() {
+int supergetchar() {
 	
 	//sets value of c
 	int c = getchar();
@@ -21,6 +21,5 @@ char supergetchar() {
 	c = toupper(c);
 	
 	//return processed char
-	printf("c after going through supergetchar() = %c\n", c);
-	return(c);
+	return c;
 }
